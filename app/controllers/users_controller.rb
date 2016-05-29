@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-  
+
   def index
   end  
   
@@ -39,6 +39,8 @@ class UsersController < ApplicationController
        render 'edit'
       end   
   end
+  
+  
  
 
   private
@@ -56,6 +58,4 @@ class UsersController < ApplicationController
    end
    
   
-
-
 end
