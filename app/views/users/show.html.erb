@@ -2,3 +2,37 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<h2><%=link_to '[プロフィールを編集]' , edit_user_path(@user.id) %></h2>
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    お名前
+  </div>
+  <div class="panel-body"><h2><%= @user.name %></h2></div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    Email
+  </div>
+  <div class="panel-body"><h2><%= @user.email %></h2></div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    出身地
+  </div>
+  <div class="panel-body"><h2><%= @user.location %></h2></div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    自己紹介
+  </div>
+  <div class="panel-body"><h2><%= @user.about %></h2></div>
+</div>
