@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.order(created_at: :desc)
   end
   
-  
   def new
     @user =User.new
   end
@@ -41,8 +40,20 @@ class UsersController < ApplicationController
       end   
   end
   
-  
- 
+  def followings
+    @title = "Following"
+    @user  = User.find(params[:id])
+    #@users = @user.following.paginate(page: params[:page])
+    @users = @user.following_users
+    #render 'show'
+  end
+
+  def followers
+    @title = "Follower"
+    @user  = User.find(params[:id])
+    @users = @user.follower_users
+    #render 'show'
+  end
 
   private
   
