@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
         before_save { self.email = self.email.downcase }
         validates :name,  presence: true, length: { maximum: 50 }
-        validates :about, :location, presence: false, length: { maximum: 50 }
+        validates :about, :location,:password_digest, presence: true, length: { maximum: 50 }, on: :update
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
         validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     following_users.include?(other_user)
   end
   
+  
+  def feed_items
+    Micropost.where(user_id: following_user_ids + [self.id])
+  end
   
   
 end
